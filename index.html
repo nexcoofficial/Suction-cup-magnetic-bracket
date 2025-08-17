@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suction Cup Magnetic Bracket - Holder HP Magnet Kuat & Kokoh</title>
+    <meta name="description" content="Magnetic Vacum Stand Holder Foldable Mini Size Strong Magnet Phone Holder HP Hisap Kuat Kokoh. Diskon 41% - Hanya Rp 177.000!">
+    <meta name="keywords" content="suction cup magnetic bracket, phone holder magnet, holder hp mobil, magnet kuat hp">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <style>
+        :root {
+            --primary: #6e3818;
+            --secondary: #fdf4e9;
+            --accent: #e1bb9e;
+            --light: #ece3dc;
+            --dark: #2a2a2a;
+        }
+        
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background: linear-gradient(135deg, #fdf4e9 0%, #f5f5f5 100%);
+            overflow-x: hidden;
+        }
+        
+        .font-lato {
+            font-family: 'Lato', sans-serif;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+        
+        /* Cyberpunk Effects */
+        .cyber-border {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cyber-border::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            animation: cyber-scan 2s linear infinite;
+        }
+        
+        @keyframes cyber-scan {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        /* Glassmorphism */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Product Variant Selector */
+        .variant-selector {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .variant-selector:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .variant-selector.active {
+            border: 3px solid var(--primary);
+            transform: scale(1.05);
+        }
+        
+        /* Social Proof Popup */
+        .social-proof {
+            position: fixed;
+            top: 20px;
+            right: -400px;
+            z-index: 9999;
+            transition: all 0.5s ease;
+            max-width: 350px;
+        }
+        
+        .social-proof.show {
+            right: 20px;
+        }
+        
+        /* Testimonial Carousel */
+        .testimonial-carousel {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .testimonial-card {
+            flex: 0 0 100%;
+            padding: 0 15px;
+        }
+        
+        @media (min-width: 768px) {
+            .testimonial-card {
+                flex: 0 0 50%;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .testimonial-card {
+                flex: 0 0 33.333333%;
+            }
+        }
+        
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .lightbox.show {
+            display: flex;
+        }
+        
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+        }
+        
+        /* Countdown Timer */
+        .countdown {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .countdown-item {
+            background: var(--primary);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            min-width: 60px;
+            text-align: center;
+        }
+        
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Order Form Styling */
+        .orderonline-embed-form {
+            background: #ffffff !important;
+            border: 1px solid #e5e7eb !important;
+            border-radius: 8px !important;
+            padding: 20px !important;
+        }
+        
+        .orderonline-embed-form button {
+            background: #ea580c !important;
+            border-radius: 6px !important;
+            padding: 10px 20px !important;
+            font-weight: 600 !important;
+        }
+        
+        .orderonline-embed-form button:hover {
+            background: #dc2626 !important;
+        }
+        
+        .orderonline-embed-form input[type="number"] {
+            border: 1px solid #d1d5db !important;
+            border-radius: 4px !important;
+            padding: 8px !important;
+            width: 80px !important;
+        }
+        
+        /* Dark Mode Toggle */
+        .dark-mode {
+            background: #1a1a1a;
+            color: #ffffff;
+        }
+        
+        .dark-mode .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Sticky CTA */
+        .sticky-cta {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+            transform: translateY(100px);
+            transition: transform 0.3s ease;
+        }
+        
+        .sticky-cta.show {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Social Proof Popup -->
+    <div class="social-proof glass-card rounded-lg p-4">
+        <div class="flex items-center space-x-3">
+            <img class="w-10 h-10 rounded-full" id="sp-avatar" src="" alt="Customer">
+            <div class="flex-1">
+                <p class="text-sm font-semibold" id="sp-name">Vina dari Jakarta</p>
+                <p class="text-xs text-gray-600">baru saja memesan</p>
+            </div>
+        </div>
+        <p class="text-xs text-gray-700 mt-2">Suction cup magnetic bracket</p>
+        <p class="text-xs text-gray-500" id="sp-time">1 menit yang lalu</p>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-card">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <h1 class="font-lato text-2xl font-bold text-gray-800">Magnetic Bracket</h1>
+                <div class="flex items-center space-x-4">
+                    <button id="darkModeToggle" class="p-2 rounded-full bg-gray-200 hover:bg-gray-300 transition">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="lg:hidden p-2" id="menuToggle">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center bg-gradient-to-br from-orange-50 via-white to-orange-100 pt-20">
+        <div class="container mx-auto px-4 py-16">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div class="fade-in">
+                        <span class="inline-block px-4 py-2 bg-orange-100 text-orange-800 rounded-full text-sm font-semibold">
+                            🔥 Diskon 41% Terbatas!
+                        </span>
+                        <h1 class="font-lato text-4xl lg:text-6xl font-bold text-gray-900 mt-4 leading-tight">
+                            Holder HP Magnet
+                            <span class="text-orange-600">Kuat & Kokoh</span>
+                        </h1>
+                        <p class="text-xl text-gray-600 mt-6 leading-relaxed">
+                            Magnetic Vacum Stand Holder Foldable Mini Size Strong Magnet Phone Holder dengan hisap super kuat untuk keamanan maksimal.
+                        </p>
+                    </div>
+
+                    <div class="fade-in space-y-4">
+                        <div class="flex items-center space-x-4">
+                            <span class="text-3xl font-bold text-gray-400 line-through">Rp 299.000</span>
+                            <span class="text-4xl font-bold text-orange-600">Rp 177.000</span>
+                        </div>
+                        
+                        <div class="countdown">
+                            <div class="countdown-item">
+                                <span id="hours">12</span>
+                                <span class="text-xs">Jam</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span id="minutes">34</span>
+                                <span class="text-xs">Menit</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span id="seconds">56</span>
+                                <span class="text-xs">Detik</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fade-in flex flex-col sm:flex-row gap-4">
+                        <button class="cyber-border bg-gradient-to-r from-orange-600 to-orange-700 text-white px-8 py-4 rounded-xl font-bold text-lg hover:shadow-lg transition duration-300">
+                            <i class="fas fa-shopping-cart mr-2"></i>
+                            Pesan Sekarang
+                        </button>
+                        <button class="border-2 border-orange-600 text-orange-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-orange-600 hover:text-white transition duration-300">
+                            <i class="fas fa-play mr-2"></i>
+                            Lihat Demo
+                        </button>
+                    </div>
+
+                    <div class="fade-in flex space-x-6 text-sm text-gray-600">
+                        <div class="flex items-center">
+                            <i class="fas fa-shield-alt text-green-600 mr-2"></i>
+                            Garansi 30 Hari
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-shipping-fast text-blue-600 mr-2"></i>
+                            Gratis Ongkir
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-headset text-purple-600 mr-2"></i>
+                            Support 24/7
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fade-in">
+                    <div class="relative">
+                        <img src="https://down-id.img.susercontent.com/file/sg-11134201-7rfgj-m9pqkjsxl8pob2.webp" 
+                             alt="Suction Cup Magnetic Bracket" 
+                             class="w-full h-auto rounded-2xl shadow-2xl">
+                        <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-lg">
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-orange-600">4.9</div>
+                                <div class="text-sm text-gray-600">⭐⭐⭐⭐⭐</div>
+                                <div class="text-xs text-gray-500">500+ Reviews</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Variants -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="font-lato text-3xl font-bold text-center mb-8">Pilih Warna Favoritmu</h2>
+            <div class="flex justify-center space-x-8">
+                <div class="variant-selector active" data-color="Hitam">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7rbk3-ma42xcndieht14@resize_w450_nl.webp" 
+                         alt="Hitam" 
+                         class="w-24 h-24 rounded-lg shadow-lg">
+                    <p class="text-center mt-2 font-semibold">Hitam</p>
+                </div>
+                <div class="variant-selector" data-color="Putih">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7rbk9-ma42xcndjt291e@resize_w450_nl.webp" 
+                         alt="Putih" 
+                         class="w-24 h-24 rounded-lg shadow-lg">
+                    <p class="text-center mt-2 font-semibold">Putih</p>
+                </div>
+                <div class="variant-selector" data-color="Pink">
+                    <img src="https://down-id.img.susercontent.com/file/id-11134207-7ra0o-mcvva2tsebw876@resize_w450_nl.webp" 
+                         alt="Pink" 
+                         class="w-24 h-24 rounded-lg shadow-lg">
+                    <p class="text-center mt-2 font-semibold">Pink</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-gradient-to-br from-gray-50 to-white">
+        <div class="container mx-auto px-4">
+            <h2 class="font-lato text-3xl font-bold text-center mb-12">Kenapa Pilih Kami?</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-card p-6 rounded-2xl text-center">
+                    <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-magnet text-2xl text-orange-600"></i>
+                    </div>
+                    <h3 class="font-lato text-xl font-bold mb-2">Magnet Super Kuat</h3>
+                    <p class="text-gray-600">Dilengkapi magnet neodymium yang mampu menahan beban hingga 500g</p>
+                </div>
+                
+                <div class="glass-card p-6 rounded-2xl text-center">
+                    <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-suction-cup text-2xl text-orange-600"></i>
+                    </div>
+                    <h3 class="font-lato text-xl font-bold mb-2">Hisap Super Kuat</h3>
+                    <p class="text-gray-600">Vacuum suction cup yang bisa dipasang di berbagai permukaan</p>
+                </div>
+                
+                <div class="glass-card p-6 rounded-2xl text-center">
+                    <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-fold text-2xl text-orange-600"></i>
+                    </div>
+                    <h3 class="font-lato text-xl font-bold mb-2">Foldable Design</h3>
+                    <p class="text-gray-600">Bisa dilipat dan diatur sudutnya sesuai kebutuhan</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Demo Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="font-lato text-3xl font-bold text-center mb-12">Lihat Cara Kerjanya</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+                    <video controls class="w-full h-auto">
+                        <source src="https://down-tx-sg.vod.susercontent.com/api/v4/11110106/mms/sg-11110106-6kios-m9mp7onq57ix99.16000101746945601.mp4" type="video/mp4">
+                        Browser Anda tidak mendukung video HTML5.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="font-lato text-3xl font-bold text-center mb-12">Galeri Produk</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-4 rounded-lg shadow-lg">
+                    <img src="https://down-id.img.susercontent.com/file/sg-11134201-7rfgj-m9pqkjsxl8pob2.webp" 
+                         class="gallery-img w-full h-auto object-contain rounded-md cursor-pointer hover:scale-105 transition" 
+                         alt="Product 1">
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-lg">
+                    <img src="https://down-id.img.susercontent.com/file/sg-11134201-7rfgr-m9pqkk4b4lek58.webp" 
+                         class="gallery-img w-full h-auto object-contain rounded-md cursor-pointer hover:scale-105 transition" 
+                         alt="Product 2">
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-lg">
+                    <img src="https://down-id.img.susercontent.com/file/sg-11134201-7rffh-m9pqkkg8n4xsdc.webp" 
+                         class="gallery-img w-full h-auto object-contain rounded-md cursor-pointer hover:scale-105 transition" 
+                         alt="Product 3">
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-lg">
+                    <img src="https://down-id.img.susercontent.com/file/sg-11134201-7rfh2-m9pqkkrc8cwpcc.webp" 
+                         class="gallery-img w-full h-auto object-contain rounded-md cursor-pointer hover:scale-105 transition" 
+                         alt="Product 4">
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-lg">
+                    <img src="https://down-id.img.susercontent.com/file/sg-11134201-7rfhe-m9pqkl1vrguu99.webp" 
+                         class="gallery-img w-full h-auto object-contain rounded-md cursor-pointer hover:scale-105 transition" 
+                         alt="Product 5">
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-lg">
+                    <img src="https://down-id.img.susercontent.com/file/sg-11134201-7rfex-m9pqkld9avmq7e.webp" 
+                         class="gallery-img w-full h-auto object-contain rounded-md cursor-pointer hover:scale-105 transition" 
+                         alt="Product 6">
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-lg">
+                    <img src="https://down-id.img.susercontent.com/file/sg-11134201-7rfhs-m9pqklmoyey489.webp" 
+                         class="gallery-img w-full h-auto object-contain rounded-md cursor-pointer hover:scale-105 transition" 
+                         alt="Product 7">
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-lg">
+                    <img src="https://down-id.img.susercontent.com/file/sg-11134201-7rffz-m9pqklwoie5of1.webp" 
+                         class="gallery-img w-full h-auto object-contain rounded-md cursor-pointer hover:scale-105 transition" 
+                         alt="Product 8">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="font-lato text-3xl font-bold text-center mb-12">Apa Kata Mereka?</h2>
+            <div class="relative">
+                <div class="testimonial-carousel" id="testimonialCarousel">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card">
+                        <div class="glass-card p-6 rounded-xl">
+                            <div class="flex items-center mb-4">
+                                <img src="https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/25253138f63154f09742184a66370090~tplv-tiktokx-cropcenter:100:100.jpg" 
+                                     class="w-10 h-10 rounded-full mr-3">
+                                <div>
+                                    <h4 class="font-semibold">Desi H.</h4>
+                                    <div class="flex">⭐⭐⭐⭐⭐</div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-3">"Simple & <strong>kuat banget</strong>, magnetnya nempel kenceng. Pasang di mobil aman, nggak gampang jatuh."</p>
+                            <img src="https://down-id.img.susercontent.com/file/id-11134103-7ra0s-mc48wgkxixbtd9.webp" 
+                                 class="w-20 h-20 rounded-lg cursor-pointer hover:opacity-80 transition"
+                                 onclick="openLightbox(this.src)">
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card">
+                        <div class="glass-card p-6 rounded-xl">
+                            <div class="flex items-center mb-4">
+                                <img src="https://p16-common-sign-useastred.tiktokcdn-eu.com/tos-useast2a-avt-0068-euttp/7e5ef794cd02b6b59d17a7c67089fc02~tplv-tiktokx-cropcenter:100:100.jpg" 
+                                     class="w-10 h-10 rounded-full mr-3">
+                                <div>
+                                    <h4 class="font-semibold">Intan Z.</h4>
+                                    <div class="flex">⭐⭐⭐⭐⭐</div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-3">"Bisa dilipat dan <strong>diatur sudutnya</strong>, praktis kalau mau dipakai di meja kerja atau di mobil. Multifungsi banget!"</p>
+                            <img src="https://down-id.img.susercontent.com/file/id-11134103-7ra0p-md4c2cu2y3vb40.webp" 
+                                 class="w-20 h-20 rounded-lg cursor-pointer hover:opacity-80 transition"
+                                 onclick="openLightbox(this.src)">
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card">
+                        <div class="glass-card p-6 rounded-xl">
+                            <div class="flex items-center mb-4">
+                                <img src="https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/5bf15a88c0a6d59209f015d5d0f20b0f~tplv-tiktokx-cropcenter:100:100.jpg" 
+                                     class="w-10 h-10 rounded-full mr-3">
+                                <div>
+                                    <h4 class="font-semibold">Aulia P.</h4>
+                                    <div class="flex">⭐⭐⭐⭐⭐</div>
+                                </div>
+                            </div>
+                            <p class="text-gray-600 mb-3">"Material <strong>premium</strong>, kelihatan elegan. Worth it banget untuk harga segini."</p>
+                            <img src="https://down-id.img.susercontent.com/file/id-11134103-7ra0p-mdaa6courf4z4c.webp" 
+                                 class="w-20 h-20 rounded-lg cursor-pointer hover:opacity-80 transition"
+                                 onclick="openLightbox(this.src)">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Navigation -->
+                <button id="prevBtn" class="absolute left-0 top-1/2 -translate-y-1/2 bg-white shadow-lg p-2 rounded-full">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button id="nextBtn" class="absolute right-0 top-1/2 -translate-y-1/2 bg-white shadow-lg p-2 rounded-full">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Form Section -->
+    <section class="py-16 bg-gradient-to-br from-orange-50 to-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto">
+                <h2 class="font-lato text-3xl font-bold text-center mb-8">Pesan Sekarang</h2>
+                
+                <!-- Order Form - OrderOnline Integration -->
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <div class="ooef">
+                        <form class="orderonline-embed-form" data-username="mila" data-product-slug="suction-cup-magnetic-bracket" data-product-id="68a2272e189a4f005d059ee0" id="oo-embed-form-suction-cup-magnetic-bracket-7920" data-origin="orderonline">
+                            <div class="ooef-loader">
+                                <style>
+                                    .ooef-loader {
+                                        visibility: hidden;
+                                        opacity: 0;
+                                        position: absolute;
+                                        left: 0;
+                                        right: 0;
+                                        top: 0;
+                                        bottom: 0;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        flex-direction: column;
+                                    }
+                                </style>
+                                <div aria-live="polite" role="status">
+                                    <div>Loading...</div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sticky CTA removed -->
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <img id="lightboxImg" src="" alt="Lightbox">
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="font-lato text-xl font-bold mb-4">Magnetic Bracket</h3>
+                    <p class="text-gray-400">Holder HP magnet terkuat dengan teknologi suction cup canggih.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Produk</h4>
+                    <ul class="text-gray-400 space-y-2">
+                        <li><a href="#" class="hover:text-white">Magnetic Holder</a></li>
+                        <li><a href="#" class="hover:text-white">Car Mount</a></li>
+                        <li><a href="#" class="hover:text-white">Desk Stand</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Support</h4>
+                    <ul class="text-gray-400 space-y-2">
+                        <li><a href="#" class="hover:text-white">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white">Tracking Order</a></li>
+                        <li><a href="#" class="hover:text-white">Returns</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Magnetic Bracket. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // OrderOnline Script
+        if (typeof xLogError != 'function') {
+            var xLogError = function (error) {
+                var req = new XMLHttpRequest();
+                var payload = JSON.stringify({ url: document.location.href, line: error.line, stack: error.stack });
+                var params = 'message=' + encodeURIComponent(error.name) + '&payload=' + encodeURIComponent(payload) + '&type=embed&level=error';
+                req.open('POST', 'https://api.orderonline.id/log', true);
+                req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                req.send(params);
+            };
+        }
+        
+        try {
+            if (typeof xEmbedScript != 'function') {
+                var xEmbedScript = function () {
+                    !function(w, d, e, v, id, t, s) {
+                        if (d.getElementById(id)) return;
+                        t = d.createElement(e);t.async = !0;t.src = v;t.id = id;
+                        s = d.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
+                    }(window, document, 'script', 'https://cdn.orderonline.id/js/embed-v2-slim.min.js?v=8.0.4', 'oo-embed-js');
+                };
+            }
+            
+            if (typeof xEmbedInit != 'function') {
+                var xEmbedInit = function (w, n) {
+                    if (w.ooe) return;
+                    n = w.ooe = function() { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments) };
+                    if (!w._ooe) w._ooe = n; n.push = n;n.loaded = !0;n.version = '8.0.4';n.queue = [];
+                };
+            }
+            
+            xEmbedInit(window);
+            ooe('setup', 'redirect', 'https://mila.orderonline.id');
+            ooe('init', '5f1a7b8fa9bf807da24d83bb', '68a2272e189a4f005d059ee0', '68a2272e189a4f005d059ee1', 'oo-embed-form-suction-cup-magnetic-bracket-7920', {
+                "mode":"page",
+                "action":"Klik untuk pemesanan",
+                "title":"Form Pemesanan",
+                "triggerPixel":true,
+                "triggerGtm":true
+            });
+            
+            if (!window.jQuery) {
+                !function(w, d, e, v, id, t, s) {
+                    if (d.getElementById(id)) return;
+                    t = d.createElement(e);t.async = !0;t.src = v;t.id = id;
+                    t.addEventListener('load', xEmbedScript);
+                    s = d.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
+                }(window, document, 'script', 'https://cdn.orderonline.id/js/vendor/jquery.min.js', 'oo-embed-jquery');
+            } else {
+                xEmbedScript();
+            }
+        } catch (e) {
+            xLogError(e);
+            throw e;
+        }
+
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const icon = darkModeToggle.querySelector('i');
+            icon.classList.toggle('fa-moon');
+            icon.classList.toggle('fa-sun');
+        });
+
+        // Countdown Timer
+        function startCountdown() {
+            const endDate = new Date();
+            endDate.setTime(endDate.getTime() + 60 * 60 * 1000); // 1 jam dari sekarang
+            
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = endDate - now;
+                
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            }
+            
+            setInterval(updateCountdown, 1000);
+        }
+        
+        startCountdown();
+
+        // Social Proof Popup
+        const customerNames = ['Vina', 'Dina', 'Kartika', 'Lestari', 'Putri', 'Maya Sari', 'Rani', 'Permata', 'Lestari F'];
+        const cities = ['Jakarta', 'Surabaya', 'Bandung', 'Medan', 'Bekasi', 'Tangerang', 'Depok', 'Semarang'];
+        const avatars = [
+            'https://i.pinimg.com/736x/7c/ae/2d/7cae2d608533ea53a87954bdddaf87db.jpg',
+            'https://i.pinimg.com/736x/1a/16/35/1a16353cf9889a9074af44f0d038bca3.jpg',
+            'https://i.pinimg.com/736x/21/99/58/2199588eac3ba7e5548c3cc8fcfd9b21.jpg',
+            'https://i.pinimg.com/736x/0c/29/32/0c2932e0e226da87256b40ffbeaed302.jpg'
+        ];
+        
+        function showSocialProof() {
+            const popup = document.querySelector('.social-proof');
+            const randomName = customerNames[Math.floor(Math.random() * customerNames.length)];
+            const randomCity = cities[Math.floor(Math.random() * cities.length)];
+            const randomAvatar = avatars[Math.floor(Math.random() * avatars.length)];
+            const randomMinutes = Math.floor(Math.random() * 15) + 1;
+            
+            document.getElementById('sp-name').textContent = `${randomName} dari ${randomCity}`;
+            document.getElementById('sp-avatar').src = randomAvatar;
+            document.getElementById('sp-time').textContent = `${randomMinutes} menit yang lalu`;
+            
+            popup.classList.add('show');
+            
+            setTimeout(() => {
+                popup.classList.remove('show');
+            }, 5000);
+        }
+        
+        // Show social proof every 8 seconds
+        setInterval(showSocialProof, 8000);
+        
+        // Testimonial Carousel
+        let currentSlide = 0;
+        const carousel = document.getElementById('testimonialCarousel');
+        const cards = document.querySelectorAll('.testimonial-card');
+        
+        function updateCarousel() {
+            const cardWidth = cards[0].offsetWidth;
+            const offset = -currentSlide * cardWidth;
+            carousel.style.transform = `translateX(${offset}px)`;
+        }
+        
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            currentSlide = Math.min(currentSlide + 1, cards.length - 1);
+            updateCarousel();
+        });
+        
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            currentSlide = Math.max(currentSlide - 1, 0);
+            updateCarousel();
+        });
+        
+        // Auto carousel
+        setInterval(() => {
+            if (currentSlide < cards.length - 1) {
+                currentSlide++;
+            } else {
+                currentSlide = 0;
+            }
+            updateCarousel();
+        }, 5000);
+        
+        // Lightbox
+        function openLightbox(src) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            lightboxImg.src = src;
+            lightbox.classList.add('show');
+        }
+        
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('show');
+        }
+        
+        // Gallery images click
+        document.querySelectorAll('.gallery-img').forEach(img => {
+            img.addEventListener('click', () => {
+                openLightbox(img.src);
+            });
+        });
+        
+        // Variant selector
+        document.querySelectorAll('.variant-selector').forEach(selector => {
+            selector.addEventListener('click', () => {
+                document.querySelectorAll('.variant-selector').forEach(s => s.classList.remove('active'));
+                selector.classList.add('active');
+            });
+        });
+        
+        // Sticky CTA removed
+        
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+        
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+        
+        gsap.utils.toArray('.fade-in').forEach(element => {
+            gsap.fromTo(element, 
+                { opacity: 0, y: 30 }, 
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    scrollTrigger: {
+                        trigger: element,
+                        start: 'top 80%',
+                        end: 'bottom 20%',
+                        toggleActions: 'play none none reverse'
+                    }
+                }
+            );
+        });
+        
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        menuToggle.addEventListener('click', () => {
+            // Add mobile menu functionality here
+            alert('Mobile menu would open here');
+        });
+    </script>
+</body>
+</html>
